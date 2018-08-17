@@ -6,7 +6,8 @@
 
     <!-- Customize your theme here. -->
     <style name="CustomToolBarStyle" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:background">#424242</item>
+        <item name="android:background">#3A3A3A</item>
+        <item name="android:textColorSecondary">@color/colorWhite</item>
     </style>
 
 
@@ -16,5 +17,6 @@
         <item name="overlapAnchor">false</item>
         <item name="android:dropDownVerticalOffset">-4dp</item>
     </style>
+
 
 </resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.RequestMovieActivity"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:padding="10dp"
+    android:background="#292929">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Share Movie Link"
+            android:textColor="#ffffff"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="25dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".5"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Movie Catagory"
+            android:textSize="17dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="#757575"/>
+
+        <Spinner
+            android:id="@+id/idMovieCatagory_shareMovie"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/text_bg"></Spinner>
+
+
+        <EditText
+            android:id="@+id/idMovieName_shareMovie"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/text_bg"
+            android:layout_marginTop="15dp"
+            android:hint="Enter Movie Name"
+            android:padding="8dp"/>
+
+        <EditText
+            android:id="@+id/idMovieLink_shareMovie"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/text_bg"
+            android:layout_marginTop="15dp"
+            android:hint="Enter Movie Link"
+            android:padding="8dp"/>
+
+
+        <TextView
+            android:id="@+id/idSend_shareMovie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send Now"
+            android:textSize="25dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/btn_bg"
+            android:layout_marginTop="15dp"
+            android:textColor="#F2F2F2"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/demo_unit_id"
+            android:background="#292929"
+            android:visibility="gone"></com.google.android.gms.ads.AdView>
+    </LinearLayout>
+
+</LinearLayout>

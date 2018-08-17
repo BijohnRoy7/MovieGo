@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.idMyAppBar);
+        //toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
         setSupportActionBar(toolbar);
 
 
@@ -138,9 +139,10 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
 
-            case R.id.idCheckUpdate:
+            case R.id.idSaherMovieLink:
 
-                Toast.makeText(this, "Check update", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Check update", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, ShareMovieLinkActivity.class));
                 break;
 
             case R.id.idRequest:
@@ -160,11 +162,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     /*#########################################*/
-
-
-
-
-
 
 
 

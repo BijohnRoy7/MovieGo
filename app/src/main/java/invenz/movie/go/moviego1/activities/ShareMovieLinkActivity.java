@@ -6,21 +6,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,23 +28,21 @@ import invenz.movie.go.moviego1.R;
 import invenz.movie.go.moviego1.utils.Constants;
 import invenz.movie.go.moviego1.utils.NetworkUtils;
 
-public class RequestMovieActivity extends AppCompatActivity {
+public class ShareMovieLinkActivity extends AppCompatActivity {
 
-    private static final String TAG = "ROY" ;
-    private EditText etMovieName;
+    private static final String TAG = "ROY";
+    private EditText etMovieName, etMovieLink;
     private Spinner spinnerCatagory;
     private TextView btSendRequest;
 
     private String[] catagories = {"Bangla Movies", "Chinese Movies", "English Movies", "Hindi Movies", "Korean Movies", "Kolkata Bangla Movies", "South Indian Movies", "Tv Series", "Others"};
     private ArrayAdapter<String> arrayAdapterCatagories;
     private ProgressDialog progressDialog;
-    private AdView mAdView;;
-
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_request_movie);
+        setContentView(R.layout.activity_share_movie_link);
 
         /*############### Internet Connection Checking ################*/
         boolean isConnected = NetworkUtils.isNetworkConnected(this);
@@ -58,36 +52,33 @@ public class RequestMovieActivity extends AppCompatActivity {
         }
 
 
-        /*############# Ad Mob ################*/
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("075B7286D27BE68C4802E48264C1254A").build();
-        mAdView.loadAd(adRequest);
+        etMovieName = findViewById(R.id.idMovieName_shareMovie);
+        etMovieLink = findViewById(R.id.idMovieLink_shareMovie);
+        spinnerCatagory = findViewById(R.id.idMovieCatagory_shareMovie);
+        btSendRequest = findViewById(R.id.idSend_shareMovie);
 
-
-        etMovieName = findViewById(R.id.idMovieName_requestMovie);
-        spinnerCatagory = findViewById(R.id.idMovieCatagory_requestMovie);
-        btSendRequest = findViewById(R.id.idSend_requestMovie);
-
-        progressDialog = new ProgressDialog(RequestMovieActivity.this);
+        progressDialog = new ProgressDialog(ShareMovieLinkActivity.this);
         progressDialog.setTitle("Sending Request");
         progressDialog.setMessage("Please Wait");
 
-        arrayAdapterCatagories = new ArrayAdapter<String>(RequestMovieActivity.this, android.R.layout.simple_list_item_1, catagories);
+        arrayAdapterCatagories = new ArrayAdapter<String>(ShareMovieLinkActivity.this, android.R.layout.simple_list_item_1, catagories);
         spinnerCatagory.setAdapter(arrayAdapterCatagories);
+
+
 
         btSendRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                final String sMovieName = etMovieName.getText().toString().toLowerCase();
+                final String sMovieName = etMovieName.getText().toString().toLowerCase().trim();
+                final String sMovieLink = etMovieLink.getText().toString().trim();
                 final String sCatagory = spinnerCatagory.getSelectedItem().toString();
 
                 if (!sMovieName.isEmpty()  &&  !sCatagory.isEmpty()){
 
-                    //Toast.makeText(RequestMovieActivity.this, ""+sCatagory, Toast.LENGTH_SHORT).show();
                     progressDialog.show();
 
-                    StringRequest stringRequest = new StringRequest(StringRequest.Method.POST, Constants.REQUEST_MOVIE_URL,
+                    StringRequest stringRequest = new StringRequest(StringRequest.Method.POST, Constants.SHARE_MOVIE_LINK_URL,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -100,7 +91,8 @@ public class RequestMovieActivity extends AppCompatActivity {
 
                                         progressDialog.dismiss();
                                         etMovieName.setText("");
-                                        Toast.makeText(RequestMovieActivity.this, ""+message, Toast.LENGTH_SHORT).show();
+                                        etMovieLink.setText("");
+                                        Toast.makeText(ShareMovieLinkActivity.this, ""+message, Toast.LENGTH_SHORT).show();
 
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -112,7 +104,7 @@ public class RequestMovieActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             Log.d(TAG, "onErrorResponse (RequestMovieActivity): "+error);
                             progressDialog.dismiss();
-                            Toast.makeText(RequestMovieActivity.this, "Failed to send request. Try later...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ShareMovieLinkActivity.this, "Failed to send request. Try later...", Toast.LENGTH_SHORT).show();
                         }
                     }){
                         @Override
@@ -120,21 +112,22 @@ public class RequestMovieActivity extends AppCompatActivity {
 
                             Map<String, String> movieRequestMap = new HashMap<>();
                             movieRequestMap.put("name", sMovieName);
+                            movieRequestMap.put("link", sMovieLink);
                             movieRequestMap.put("catagory", sCatagory);
                             return movieRequestMap;
                         }
                     };
 
-                    RequestQueue requestQueue = Volley.newRequestQueue(RequestMovieActivity.this);
+                    RequestQueue requestQueue = Volley.newRequestQueue(ShareMovieLinkActivity.this);
                     requestQueue.add(stringRequest);
 
                 }else {
-                    Toast.makeText(RequestMovieActivity.this, "Please Fill All Fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ShareMovieLinkActivity.this, "Please provide required information", Toast.LENGTH_SHORT).show();
                 }
+
 
             }
         });
-
 
     }
 }

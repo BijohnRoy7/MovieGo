@@ -10,6 +10,7 @@ public class Constants {
     public static final String STORE_TOKEN_URL = DEFAULT_URL+"storeToken.php";
     public static final String GET_ALL_MOVIES_URL = DEFAULT_URL+"getMovies.php";
     public static final String REQUEST_MOVIE_URL = DEFAULT_URL+"movieRequest.php";
+    public static final String SHARE_MOVIE_LINK_URL = DEFAULT_URL+"shareMovie.php";
 
 
     //public static final String DEFAULT_URL ="http://192.168.43.166/";
