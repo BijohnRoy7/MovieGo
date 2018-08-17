@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/idRequest"
+        android:title="Request Movie"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/idShare"
+        android:title="Share app link"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/idCheckUpdate"
+        android:title="Check App Update"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/idExit"
+        android:title="Exit"
+        app:showAsAction="never"
+        />
+
+
+
+</menu>

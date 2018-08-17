@@ -1,0 +1,231 @@
+{
+  "project_info": {
+    "project_number": "453335169862",
+    "firebase_url": "https://mysliding.firebaseio.com",
+    "project_id": "mysliding",
+    "storage_bucket": "mysliding.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453335169862:android:c5d5b243e044746b",
+        "android_client_info": {
+          "package_name": "com.donate_blood.invenz.moviegoadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453335169862-0a3u2odi6bsm27ioq7lh5vm5lh4lpajp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.donate_blood.invenz.moviegoadmin",
+            "certificate_hash": "93eb718271ed4e21547d8509297f4695db5932dc"
+          }
+        },
+        {
+          "client_id": "453335169862-kd5jbj2sf7btvd6ghhm65ukr0uh53c6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDwgTD_m9eNyIRhJs3EMoLCzTR_8BziZI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453335169862-kd5jbj2sf7btvd6ghhm65ukr0uh53c6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453335169862:android:c0a94a5087e67745",
+        "android_client_info": {
+          "package_name": "com.example.bijohn.moviego"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453335169862-9f1c81jg4leim6avlmcmdoe9guoken0o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bijohn.moviego",
+            "certificate_hash": "93eb718271ed4e21547d8509297f4695db5932dc"
+          }
+        },
+        {
+          "client_id": "453335169862-kd5jbj2sf7btvd6ghhm65ukr0uh53c6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDwgTD_m9eNyIRhJs3EMoLCzTR_8BziZI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453335169862-kd5jbj2sf7btvd6ghhm65ukr0uh53c6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453335169862:android:7598066248b6c9b5",
+        "android_client_info": {
+          "package_name": "com.example.bijohn.mysliding"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453335169862-up5o57bibbbhalt40jrdptg60kh932pp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bijohn.mysliding",
+            "certificate_hash": "917fb1ca5d9054fdfe408e3d2810f894868fdde1"
+          }
+        },
+        {
+          "client_id": "453335169862-kd5jbj2sf7btvd6ghhm65ukr0uh53c6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDwgTD_m9eNyIRhJs3EMoLCzTR_8BziZI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453335169862-kd5jbj2sf7btvd6ghhm65ukr0uh53c6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453335169862:android:a2cabb46ca02e233",
+        "android_client_info": {
+          "package_name": "com.moviego.invenz.moviego1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453335169862-4jp8kc42u1ro6ud42assp23cs00o02or.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moviego.invenz.moviego1",
+            "certificate_hash": "93eb718271ed4e21547d8509297f4695db5932dc"
+          }
+        },
+        {
+          "client_id": "453335169862-kd5jbj2sf7btvd6ghhm65ukr0uh53c6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDwgTD_m9eNyIRhJs3EMoLCzTR_8BziZI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453335169862-kd5jbj2sf7btvd6ghhm65ukr0uh53c6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453335169862:android:675fe1fdc0bf68d9",
+        "android_client_info": {
+          "package_name": "invenz.movie.go.moviego1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453335169862-jtajlqgn0ip467faojonjhsbvlhrom4r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "invenz.movie.go.moviego1",
+            "certificate_hash": "93eb718271ed4e21547d8509297f4695db5932dc"
+          }
+        },
+        {
+          "client_id": "453335169862-kd5jbj2sf7btvd6ghhm65ukr0uh53c6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDwgTD_m9eNyIRhJs3EMoLCzTR_8BziZI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453335169862-kd5jbj2sf7btvd6ghhm65ukr0uh53c6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MovieListActivity"
+    android:orientation="vertical"
+    android:background="#292929">
+
+
+
+    <EditText
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/idSearchEditText"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/search_edittext_bg"
+        android:hint="Search movie here..."
+        android:paddingLeft="20dp"
+        android:textColorHint="#B7ABA8"
+        android:textColor="#292929"/>
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/demo_unit_id"
+        android:background="@color/colorPrimary"
+        android:visibility="gone"></com.google.android.gms.ads.AdView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/idMovieListRecView_movie_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
