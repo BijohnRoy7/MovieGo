@@ -67,14 +67,14 @@ public class MainActivity extends AppCompatActivity {
         /*#################################*/
         catagories = new ArrayList<>();
         catagories.add(new Catagory("Bangla Movies", R.drawable.pic1));
-        catagories.add(new Catagory("Chinese Movies", R.drawable.pic2));
-        catagories.add(new Catagory("English Movies", R.drawable.pic1));
-        catagories.add(new Catagory("Hindi Movies", R.drawable.pic2));
-        catagories.add(new Catagory("Korean Movies", R.drawable.pic1));
-        catagories.add(new Catagory("Kolkata Bangla Movies", R.drawable.pic2));
-        catagories.add(new Catagory("South Indian Movies", R.drawable.pic1));
-        catagories.add(new Catagory("Tv Series", R.drawable.pic1));
-        catagories.add(new Catagory("Others", R.drawable.pic2));
+        catagories.add(new Catagory("Chinese Movies", R.drawable.chine));
+        catagories.add(new Catagory("English Movies", R.drawable.holly));
+        catagories.add(new Catagory("Hindi Movies", R.drawable.bollywood));
+        catagories.add(new Catagory("Korean Movies", R.drawable.korea));
+        catagories.add(new Catagory("Kolkata Bangla Movies", R.drawable.kolkata));
+        catagories.add(new Catagory("South Indian Movies", R.drawable.south_indian));
+        catagories.add(new Catagory("Tv Series", R.drawable.tv));
+        catagories.add(new Catagory("Others", R.drawable.others));
 
         customAdapter = new CatagoryCustomAdapter(MainActivity.this, catagories);
 
