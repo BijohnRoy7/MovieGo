@@ -3,6 +3,7 @@ package invenz.movie.go.moviego1.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Parcelable;
 import android.os.PersistableBundle;
@@ -11,11 +12,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -73,6 +80,10 @@ public class MovieListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_list);
 
+        Toolbar toolbar = findViewById(R.id.idMyAppBar);
+        setSupportActionBar(toolbar);
+        //toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
+
 
         catagoryName = getIntent().getExtras().getString("catagory");
         //Toast.makeText(this, ""+catagoryName, Toast.LENGTH_SHORT).show();
@@ -95,11 +106,11 @@ public class MovieListActivity extends AppCompatActivity {
         movies = new ArrayList<>();
         moviesRecyclerView = findViewById(R.id.idMovieListRecView_movie_list);
         mStorageRef = FirebaseStorage.getInstance().getReference();
-        etSearch = findViewById(R.id.idSearchEditText);
+        //etSearch = findViewById(R.id.idSearchEditText);
 
 
         /*################### Search on the ListView ####################*/
-        etSearch.addTextChangedListener(new TextWatcher() {
+        /*etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -137,7 +148,7 @@ public class MovieListActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
             }
-        });
+        });*/
         /*################# Searched EditText Ends ############################*/
 
 
@@ -245,6 +256,63 @@ public class MovieListActivity extends AppCompatActivity {
 
     }
 
+
+    /*############### ActionBar ###################*/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_search, menu);
+
+        MenuItem item = menu.findItem(R.id.menuSearch);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        int id = searchView.getContext()
+                .getResources()
+                .getIdentifier("android:id/search_src_text", null, null);
+        TextView textView = (TextView) searchView.findViewById(id);
+        textView.setTextColor(Color.WHITE);
+        textView.setHint("Search Movie");
+        textView.setHintTextColor(Color.GRAY);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                if (newText.toString().equals("")){
+                    //Toast.makeText(MovieListActivity.this, "Ok", Toast.LENGTH_SHORT).show();
+                    customAdapter = new MovieListCUstomAdapterr( new Header(catagoryName), movies, getApplicationContext());
+                    moviesRecyclerView.setAdapter(customAdapter);
+                }else {
+                    String text = newText.toString().toLowerCase();
+                    //Toast.makeText(MovieListActivity.this, "Yeah: "+text, Toast.LENGTH_SHORT).show();
+                    List<Movie> searchedMovies = new ArrayList<>();
+
+                    for (Movie m: movies){
+                        if (m.getMovieName().toLowerCase().trim().contains(text)){
+                            //Toast.makeText(MovieListActivity.this, ""+m.getMovieName(), Toast.LENGTH_SHORT).show();
+                            searchedMovies.add(m);
+                        }
+                    }
+
+                    customAdapter = new MovieListCUstomAdapterr( new Header(catagoryName), searchedMovies, getApplicationContext());
+                    moviesRecyclerView.setAdapter(customAdapter);
+
+                }
+
+
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
 
 
 

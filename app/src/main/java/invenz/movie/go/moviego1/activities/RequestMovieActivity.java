@@ -3,7 +3,10 @@ package invenz.movie.go.moviego1.activities;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -49,6 +52,9 @@ public class RequestMovieActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_movie);
+
+        Toolbar toolbar = findViewById(R.id.idMyAppBar);
+        setSupportActionBar(toolbar);
 
         /*############### Internet Connection Checking ################*/
         boolean isConnected = NetworkUtils.isNetworkConnected(this);
@@ -137,4 +143,16 @@ public class RequestMovieActivity extends AppCompatActivity {
 
 
     }
+
+
+    /*############### ActionBar ###################*/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.normal_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
 }

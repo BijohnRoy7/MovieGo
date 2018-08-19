@@ -7,21 +7,10 @@
     tools:context=".activities.MovieListActivity"
     android:orientation="vertical"
     android:background="#292929">
+    <include
+        android:id="@+id/idMyAppBar"
+        layout="@layout/mytoolbar" />
 
-
-
-    <EditText
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:id="@+id/idSearchEditText"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/search_edittext_bg"
-        android:hint="Search movie here..."
-        android:paddingLeft="20dp"
-        android:textColorHint="#B7ABA8"
-        android:textColor="#292929"/>
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"

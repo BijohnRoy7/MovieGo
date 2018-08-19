@@ -24,6 +24,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.RequestMovieActivity" />
+        <activity android:name=".activities.ShareMovieLinkActivity" />
+
+
+
+
 
         <service android:name=".notification.MyFirebaseInstanceIdService">
             <intent-filter>
@@ -36,7 +41,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activities.ShareMovieLinkActivity"></activity>
+
     </application>
 
 </manifest>

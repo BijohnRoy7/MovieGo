@@ -7,12 +7,18 @@
     tools:context=".activities.RequestMovieActivity"
     android:orientation="vertical"
     android:weightSum="10"
-    android:padding="10dp"
     android:background="#292929">
+
+    <include
+        android:id="@+id/idMyAppBar"
+        layout="@layout/mytoolbar" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:padding="10dp"
+
         android:layout_weight="2">
         <TextView
             android:layout_width="match_parent"
@@ -34,6 +40,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"
+        android:padding="10dp"
+
         android:orientation="vertical">
 
         <EditText
