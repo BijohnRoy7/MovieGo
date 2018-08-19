@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.LoginActivity"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/idGoogleSignIn_loginAct"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"></com.google.android.gms.common.SignInButton>
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="00dp"></com.google.android.gms.common.SignInButton>
 
 </LinearLayout>

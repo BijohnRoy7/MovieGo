@@ -4,6 +4,7 @@ public class Constants {
 
     public static final String SHARED_PREF_NAME = "MySharedPref";
     public static final String TOKEN_KEY ="myToken";
+    public static final String USER_ID ="user_id";
     public static final String BROADCAST_KEY ="MyBroadcast";
 
     public static final String DEFAULT_URL ="http://invenz-it.com/moviego/";
@@ -11,6 +12,7 @@ public class Constants {
     public static final String GET_ALL_MOVIES_URL = DEFAULT_URL+"getMovies.php";
     public static final String REQUEST_MOVIE_URL = DEFAULT_URL+"movieRequest.php";
     public static final String SHARE_MOVIE_LINK_URL = DEFAULT_URL+"shareMovie.php";
+    public static final String SAVE_USER_URL = DEFAULT_URL+"saveUser.php";
 
 
     //public static final String DEFAULT_URL ="http://192.168.43.166/";

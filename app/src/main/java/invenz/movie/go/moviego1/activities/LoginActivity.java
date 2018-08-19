@@ -1,6 +1,7 @@
 package invenz.movie.go.moviego1.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -23,7 +31,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import invenz.movie.go.moviego1.R;
+import invenz.movie.go.moviego1.utils.Constants;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,7 +47,8 @@ public class LoginActivity extends AppCompatActivity {
     private SignInButton btGmailSignIn;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
-
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +59,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_NAME, MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -118,6 +136,15 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
+                            String userId = user.getUid();
+                            Log.d(TAG, "onComplete(LoginAct): "+userId);
+
+                            saveUserIdIntoServer(userId);
+
+                            /*## storing user id ##*/
+                            editor.putString(Constants.USER_ID, userId);
+                            editor.commit();
+
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             finish();
                             Toast.makeText(LoginActivity.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
@@ -138,6 +165,44 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+
+
+    /*#####                      saving user id in server                       #####*/
+    private void saveUserIdIntoServer(final String userId) {
+
+        StringRequest stringRequest = new StringRequest(StringRequest.Method.POST, Constants.SAVE_USER_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String msg = jsonObject.getString("message");
+                            Toast.makeText(LoginActivity.this, ""+msg, Toast.LENGTH_SHORT).show();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG, "onErrorResponse(LOGIN): "+error);
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> userMap = new HashMap<>();
+                userMap.put("user_id", userId);
+                return userMap;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
+        requestQueue.add(stringRequest);
+    }
 
 
 }

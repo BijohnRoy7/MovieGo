@@ -1,6 +1,7 @@
 package invenz.movie.go.moviego1.activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +21,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,6 +45,9 @@ public class ShareMovieLinkActivity extends AppCompatActivity {
     private ArrayAdapter<String> arrayAdapterCatagories;
     private ProgressDialog progressDialog;
 
+    private FirebaseAuth mAuth;
+    private String userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +62,15 @@ public class ShareMovieLinkActivity extends AppCompatActivity {
             Toast.makeText(this, "Internet is not connected", Toast.LENGTH_SHORT).show();
             finish();
         }
+
+        /*##                  checking authentication              ##*/
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser==null){
+            startActivity(new Intent(ShareMovieLinkActivity.this, LoginActivity.class));
+            finish();
+        }
+        userId = currentUser.getUid();
 
 
         etMovieName = findViewById(R.id.idMovieName_shareMovie);
@@ -120,6 +135,7 @@ public class ShareMovieLinkActivity extends AppCompatActivity {
                             movieRequestMap.put("name", sMovieName);
                             movieRequestMap.put("link", sMovieLink);
                             movieRequestMap.put("catagory", sCatagory);
+                            movieRequestMap.put("user_id", userId);
                             return movieRequestMap;
                         }
                     };
