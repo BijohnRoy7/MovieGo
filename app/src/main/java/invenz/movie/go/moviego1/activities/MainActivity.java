@@ -29,6 +29,8 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     private CatagoryCustomAdapter customAdapter;
 
     private TextView tvToken;
-
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
         //toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
 
 
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser==null){
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+        }
 
         /*#################################*/
         catagories = new ArrayList<>();
@@ -154,6 +162,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.idExit:
+                finish();
+                //Toast.makeText(this, "Exit", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.idLogout:
+                mAuth.signOut();
                 finish();
                 //Toast.makeText(this, "Exit", Toast.LENGTH_SHORT).show();
                 break;

@@ -156,7 +156,7 @@ public class MovieListActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(MovieListActivity.this);
         progressDialog.setTitle("Getting "+catagoryName+"...");
         progressDialog.setMessage("Please Wait...");
-        progressDialog.setCancelable(true);
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
         /*############# Configuring GridLayoutManager ##############*/
@@ -238,6 +238,8 @@ public class MovieListActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d(TAG, "onErrorResponse(MovieListActivity)1: "+error);
+                progressDialog.dismiss();
+                Toast.makeText(MovieListActivity.this, "Error occured. Please Try later...", Toast.LENGTH_SHORT).show();
                 }
         }){
             @Override
