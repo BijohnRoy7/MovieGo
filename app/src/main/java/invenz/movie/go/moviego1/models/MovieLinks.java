@@ -4,14 +4,32 @@ import java.util.List;
 
 public class MovieLinks {
 
-    private String link1, link2, link3, link4;
+    private String link1, link2, link3, link4, subtitle1, subtitle2;
 
 
-    public MovieLinks(String link1, String link2, String link3, String link4) {
+    public MovieLinks(String link1, String link2, String link3, String link4, String subtitle1, String subtitle2) {
         this.link1 = link1;
         this.link2 = link2;
         this.link3 = link3;
         this.link4 = link4;
+        this.subtitle1 = subtitle1;
+        this.subtitle2 = subtitle2;
+    }
+
+    public String getSubtitle1() {
+        return subtitle1;
+    }
+
+    public void setSubtitle1(String subtitle1) {
+        this.subtitle1 = subtitle1;
+    }
+
+    public String getSubtitle2() {
+        return subtitle2;
+    }
+
+    public void setSubtitle2(String subtitle2) {
+        this.subtitle2 = subtitle2;
     }
 
     public String getLink4() {

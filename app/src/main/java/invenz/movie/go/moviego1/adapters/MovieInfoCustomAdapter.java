@@ -129,6 +129,8 @@ public class MovieInfoCustomAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             ((VHItem) holder).tvMovieLink2.setText("Movie Link 2");
             ((VHItem) holder).tvMovieLink3.setText("Movie Link 3");
             ((VHItem) holder).tvMovieLink4.setText("Movie Link 4");
+            ((VHItem) holder).subtitle1.setText("Subtitle Link 1");
+            ((VHItem) holder).subtitle2.setText("Subtitle Link 2");
 
 
             ((VHItem) holder).tvMovieLink.setOnClickListener(new View.OnClickListener() {
@@ -278,6 +280,80 @@ public class MovieInfoCustomAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 }
             });
 
+
+            ((VHItem) holder).subtitle1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Toast.makeText(context, ""+((VHItem) holder).tvMovieLink3.getText(), Toast.LENGTH_SHORT).show();
+
+                    /*####                 Animation when cliked image                 ####*/
+                    v.startAnimation(AnimationUtils.loadAnimation(context, R.anim.click_anim));
+
+                    if (movieLink.getSubtitle1().isEmpty()){
+                        Toast.makeText(context, "No link available", Toast.LENGTH_SHORT).show();
+                    }else {
+
+                        /*######## For showing ad ##########*/
+                        if (mInterstitialAd.isLoaded()){
+                            //Toast.makeText(context, "Lodaded", Toast.LENGTH_SHORT).show();
+                            mInterstitialAd.show();
+
+                            mInterstitialAd.setAdListener(new AdListener(){
+                                @Override
+                                public void onAdClosed() {
+                                    super.onAdClosed();
+                                    mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                                    context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(movieLink.getSubtitle1())));
+                                }
+                            });
+                        }else {
+                            //Toast.makeText(context, "Not loaded", Toast.LENGTH_SHORT).show();
+                            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(movieLink.getSubtitle1())));
+                        }
+
+                    }
+
+                }
+            });
+
+
+            ((VHItem) holder).subtitle2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Toast.makeText(context, ""+((VHItem) holder).tvMovieLink3.getText(), Toast.LENGTH_SHORT).show();
+
+                    /*####                 Animation when cliked image                 ####*/
+                    v.startAnimation(AnimationUtils.loadAnimation(context, R.anim.click_anim));
+
+                    if (movieLink.getSubtitle1().isEmpty()){
+                        Toast.makeText(context, "No link available", Toast.LENGTH_SHORT).show();
+                    }else {
+
+                        /*######## For showing ad ##########*/
+                        if (mInterstitialAd.isLoaded()){
+                            //Toast.makeText(context, "Lodaded", Toast.LENGTH_SHORT).show();
+                            mInterstitialAd.show();
+
+                            mInterstitialAd.setAdListener(new AdListener(){
+                                @Override
+                                public void onAdClosed() {
+                                    super.onAdClosed();
+                                    mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                                    context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(movieLink.getSubtitle2())));
+                                }
+                            });
+                        }else {
+                            //Toast.makeText(context, "Not loaded", Toast.LENGTH_SHORT).show();
+                            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(movieLink.getSubtitle2())));
+                        }
+
+                    }
+
+                }
+            });
+
+
+
             /*VHItem VHitem = (VHItem)holder;
             VHitem.tvMovieLink.setText(currentItem.getLinks());
             VHitem.iv.setBackgroundResource(currentItem.getId());*/
@@ -328,7 +404,7 @@ public class MovieInfoCustomAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
     class VHItem extends RecyclerView.ViewHolder{
-        TextView tvMovieLink, tvMovieLink2, tvMovieLink3, tvMovieLink4 ;
+        TextView tvMovieLink, tvMovieLink2, tvMovieLink3, tvMovieLink4, subtitle1, subtitle2 ;
 
         public VHItem(View itemView) {
             super(itemView);
@@ -336,6 +412,8 @@ public class MovieInfoCustomAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             tvMovieLink2 = itemView.findViewById(R.id.idMovieLink1_singleMovieLink);
             tvMovieLink3 = itemView.findViewById(R.id.idMovieLink2_singleMovieLink);
             tvMovieLink4 = itemView.findViewById(R.id.idMovieLink3_singleMovieLink);
+            subtitle1 = itemView.findViewById(R.id.idSubtitleLink1_singleMovieLink);
+            subtitle2 = itemView.findViewById(R.id.idSubtitleLink2_singleMovieLink);
         }
     }
 }

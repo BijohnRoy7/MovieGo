@@ -66,7 +66,7 @@ public class MovieListActivity extends AppCompatActivity {
     private RecyclerView moviesRecyclerView;
     private String catagoryName;
     private EditText etSearch;
-    private List<Movie> movies;
+    private ArrayList<Movie> movies;
     //private MovieListCustomAdapter customAdapter;
     private MovieListCUstomAdapterr customAdapter;
     private ProgressDialog progressDialog;
@@ -96,6 +96,8 @@ public class MovieListActivity extends AppCompatActivity {
             Toast.makeText(this, "Internet is not connected", Toast.LENGTH_SHORT).show();
             finish();
         }
+
+
 
         /*############# Ad Mob ################*/
         mAdView = findViewById(R.id.adView);
@@ -171,6 +173,7 @@ public class MovieListActivity extends AppCompatActivity {
 
 
 
+
         /*############## StringRequest ###############*/
         final StringRequest stringRequest = new StringRequest(StringRequest.Method.POST, Constants.GET_ALL_MOVIES_URL,
                 new Response.Listener<String>() {
@@ -198,9 +201,11 @@ public class MovieListActivity extends AppCompatActivity {
                                     String movieReleaseYear = jsonObject.getString("release_year");
                                     String image_link = jsonObject.getString("image_link");
                                     String youttubeVideoId = jsonObject.getString("video_id");
+                                    String subtitle1 = jsonObject.getString("subtitle1");
+                                    String subtitle2 = jsonObject.getString("subtitle2");
 
 
-                                    Movie movie = new Movie(id, movieName, movieDesc, movieLink, movieLink1, movieLink2,movieLink3, movieReleaseYear, image_link, youttubeVideoId);
+                                    Movie movie = new Movie(id, movieName, movieDesc, movieLink, movieLink1, movieLink2,movieLink3, movieReleaseYear, image_link, youttubeVideoId, subtitle1, subtitle2);
                                     movies.add(movie);
 
                                     //Log.d(TAG, "onResponse: "+movie.getId()+", "+movie.getMovieName());
@@ -376,8 +381,6 @@ public class MovieListActivity extends AppCompatActivity {
                 return "undefined";
         }
     }
-
-
 
 
 }

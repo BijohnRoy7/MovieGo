@@ -1,13 +1,16 @@
 package invenz.movie.go.moviego1.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.storage.StorageReference;
 
-public class Movie {
+public class Movie{
 
     private int id;
-    private String movieName, movieDesc, movieLink, movieLink1, movieLink2,movieLink3, releaseDate, imageLink, youtubeVideoId;
+    private String movieName, movieDesc, movieLink, movieLink1, movieLink2,movieLink3, releaseDate, imageLink, youtubeVideoId, subtitle1, subtitle2;
 
-    public Movie(int id, String movieName, String movieDesc, String movieLink, String movieLink1, String movieLink2, String movieLink3, String releaseDate, String imageLink, String youtubeVideoId) {
+    public Movie(int id, String movieName, String movieDesc, String movieLink, String movieLink1, String movieLink2, String movieLink3, String releaseDate, String imageLink, String youtubeVideoId, String subtitle1, String subtitle2) {
         this.id = id;
         this.movieName = movieName;
         this.movieDesc = movieDesc;
@@ -18,11 +21,33 @@ public class Movie {
         this.releaseDate = releaseDate;
         this.imageLink = imageLink;
         this.youtubeVideoId = youtubeVideoId;
+        this.subtitle1 = subtitle1;
+        this.subtitle2 = subtitle2;
+    }
+
+
+    public String getSubtitle1() {
+        return subtitle1;
+    }
+
+    public void setSubtitle1(String subtitle1) {
+        this.subtitle1 = subtitle1;
+    }
+
+    public String getSubtitle2() {
+        return subtitle2;
+    }
+
+    public void setSubtitle2(String subtitle2) {
+        this.subtitle2 = subtitle2;
     }
 
     public String getYoutubeVideoId() {
         return youtubeVideoId;
     }
+
+
+
 
     public void setYoutubeVideoId(String youtubeVideoId) {
         this.youtubeVideoId = youtubeVideoId;
@@ -99,5 +124,7 @@ public class Movie {
     public void setImageLink(String imageLink) {
         this.imageLink = imageLink;
     }
+
+
 
 }

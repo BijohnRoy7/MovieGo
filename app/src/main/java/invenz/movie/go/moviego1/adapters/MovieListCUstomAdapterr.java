@@ -98,6 +98,8 @@ public class MovieListCUstomAdapterr extends RecyclerView.Adapter<RecyclerView.V
                     bundle.putString("MovieYear", currentItem.getReleaseDate() );
                     bundle.putString("MovieImage", currentItem.getImageLink() );
                     bundle.putString("YoutubeVideoId", currentItem.getYoutubeVideoId() );
+                    bundle.putString("subtitle1", currentItem.getSubtitle1() );
+                    bundle.putString("subtitle2", currentItem.getSubtitle2() );
 
                     //Toast.makeText(context, ""+currentItem.getMovieName(), Toast.LENGTH_SHORT).show();
                     intent.putExtra("MovieInfo", bundle);

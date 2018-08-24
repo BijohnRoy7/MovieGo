@@ -46,6 +46,9 @@ public class MyNotificationManager {
                 .setContentTitle(from)
                 .setContentText(notification)
                 .setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(), R.mipmap.ic_launcher_round))
+                .setDefaults(Notification.DEFAULT_SOUND)
+                .setDefaults(Notification.DEFAULT_LIGHTS)
+                .setDefaults(Notification.DEFAULT_VIBRATE)
                 .build();
 
         /*########## myNotification flags #############*/

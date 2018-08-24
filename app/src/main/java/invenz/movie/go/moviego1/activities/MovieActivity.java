@@ -49,14 +49,16 @@ public class MovieActivity extends YouTubeBaseActivity {
         String movieYear = movieInfo.getString("MovieYear");
         String imageURL = movieInfo.getString("MovieImage");
         String youtubeVideoId = movieInfo.getString("YoutubeVideoId");
+        String subtitle1 = movieInfo.getString("subtitle1");
+        String subtitle2 = movieInfo.getString("subtitle2");
 
         //Toast.makeText(this, ""+movieInfo.getString("MovieName"), Toast.LENGTH_SHORT).show();
 
         /*############ MOVIE LINKS ############*/
-        movieLink = new MovieLinks(movieLink1, movieLink2, movieLink3, movieLink4);
+        movieLink = new MovieLinks(movieLink1, movieLink2, movieLink3, movieLink4, subtitle1, subtitle2);
 
         /*######### MOVIE INFO ##########*/
-        Movie movie = new Movie(movieId, movieName, movieDesc, "1","2", "3","4", movieYear,imageURL, youtubeVideoId);
+        Movie movie = new Movie(movieId, movieName, movieDesc, "1","2", "3","4", movieYear,imageURL, youtubeVideoId, "1", "1");
 
         /*############ CONFIGURING RecyclerView #############*/
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
